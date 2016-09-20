@@ -9,9 +9,12 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
+    @IBOutlet weak var defaultTipSettings:UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Tip Calculator"
 
         // Do any additional setup after loading the view.
     }
@@ -21,6 +24,11 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func defaultTipUpdate(_ sender: AnyObject) {
+        let defaults = UserDefaults.standard
+        defaults.set(defaultTipSettings.selectedSegmentIndex, forKey: "default_tip_percentage")
+        defaults.synchronize()
+    }
 
     /*
     // MARK: - Navigation
